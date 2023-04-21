@@ -19,7 +19,7 @@ JOIN d_pos AS pos ON product.POS_id= pos.id
 JOIN d_store AS store ON pos.store_id=store.id
 JOIN d_area AS gebied ON store.area_id=gebied.id
 GROUP BY gebied.name
---duur van de query: 0,016 sec
+--duur van de query: 0,017 sec
 
 --De totale omzet van de functie cashier:
 SELECT SUM(product.price_total) AS "totale omzet", `function`.`function`
@@ -28,7 +28,7 @@ JOIN d_employee AS employee ON product.Employee_id= employee.id
 JOIN d_function AS `function` ON employee.function_id=`function`.id
 WHERE `function`.`function`='cashier'
 GROUP BY `function`.`function`
---duur van de query: 0,015 sec
+--duur van de query: 0,032 sec
 
 --Het toevoegen van een nieuw verkochte product waarbij iedere attribute/dimensie nieuw is
 INSERT INTO `d_area` (`id`, `name`, `lon`, `lat`) VALUES (3, 'Amsterdam', 4.8951679, 52.3702157);
@@ -45,14 +45,13 @@ INSERT INTO `d_function` (`id`, `function`) VALUES (4, 'department manager');
 INSERT INTO `d_employee` (`id`, `firstname`, `surname`, `function_id`) VALUES (5, 'Sophie', 'de Vries', 4);
 
 INSERT INTO `f_product_sold` (`id`, `price_total`, `quantity`, `SKU_id`, `customer_id`, `Employee_id`, `POS_id`) VALUES (8, 25, 10, 7, 4, 5, 8);
-
---duur van de query: 1,530 sec 
+--duur van de query: 1,938 sec 
 
 --Het toevoegen van een verkocht product waarbij iedere attribute/dimensie al bestaat
 INSERT INTO `f_product_sold` (`id`, `price_total`, `quantity`, `SKU_id`, `customer_id`, `Employee_id`, `POS_id`) VALUES (9, 10, 6, 7, 3, 2, 8);
---duur van de query: 0,125 sec
+--duur van de query: 0,922 sec
 
 --Het verwijderen van een verkocht product
 DELETE FROM `f_product_sold` WHERE `id`=9
---duur van de query: 0,359 sec
+--duur van de query: 0,110 sec
 
