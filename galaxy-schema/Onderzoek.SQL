@@ -49,9 +49,9 @@ INSERT INTO `f_product_sold` (`id`, `price_total`, `quantity`, `SKU_id`, `custom
 
 --Het toevoegen van een verkocht product waarbij iedere attribute/dimensie al bestaat
 INSERT INTO `f_product_sold` (`id`, `price_total`, `quantity`, `SKU_id`, `customer_id`, `Employee_id`, `POS_id`) VALUES (9, 10, 6, 7, 3, 2, 8);
---duur van de query: 0,922 sec
+--duur van de query: 0,622 sec
 
 --Het verwijderen van een verkocht product
 DELETE FROM `f_product_sold` WHERE `id`=9
---duur van de query: 0,110 sec
+--duur van de query: 0,410 sec
 
