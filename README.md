@@ -5,10 +5,6 @@ Dit is de github-repostiry voor het individuele onderzoek van Steven Rietberg vo
 ### inleiding
 Voor het bedrijf Officebooking moeten ik en mijn projectgroep onderzoek doen naar hoe wij de datastructuur van hun applicatie kunnen veranderen zodat de datastructuur toekomstbestendig en flexibel is. De nieuwe datastructuur moet onder andere een “best-match” functionaliteit kunnen ondersteunen. Deze functionaliteit houdt in dat als een gebruiker van de Officebooking-applicatie opzoek is naar een kamer hij/zij de meeste geschikte kamer als eerste ziet. Voor dit onderzoek heeft de projectgroep een hoofdvraag met een aantal deelvragen opgesteld. Eén van deze deelvragen pak ik op als hoofdvraag voor mijn individuele onderzoek. Deze deelvraag is: “Welke factoren hebben invloed op de keuze van een datastructuur.”
 
-Als deelvragen voor dit onderzoek heb ik:
--	Welke soort datastructuren zijn er
--	Waarvoor worden verschillende structuren gebruikt
-
 Voor dit onderzoek is ervoor gekozen om eerst informatie te vergaren doormiddel van een deskresearch om vervolgens deze statements te bevestigen doormiddel van een fieldresearch. Het fieldresearch bestaat uit een aantal testen op een toegepaste vorm van de datastructuur waarover wordt gesproken in de deskresearch. Deze toegepaste vorm bevat een gemaakte ERD en een docker-compose. De toegepaste vorm basseerd zich op een casus die gebruikt is tijdens het hoorcollege over dimensioneel modelleren namelijk de “Retail Case Study” casus (deze is terug te vinden in bijlage I). 
 
 ### Fieldresearch
