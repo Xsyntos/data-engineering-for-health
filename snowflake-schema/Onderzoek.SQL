@@ -1,12 +1,16 @@
 --Verkrijg alle data:
 SELECT * 
 FROM f_product_sold AS product 
-JOIN d_area AS gebied ON product.Area_id= gebied.id
 JOIN d_customer AS customer ON product.customer_id= customer.id
 JOIN d_employee AS employee ON product.Employee_id= employee.id
 JOIN d_pos AS pos ON product.POS_id= pos.id
 JOIN d_sku AS sku ON product.SKU_id= sku.id
---duur van de query: 0,032 sec
+JOIN d_catagory AS category ON sku.catagory_id=category.id
+JOIN d_store AS store ON pos.store_id=store.id
+JOIN d_area AS gebied ON store.area_id=gebied.id
+JOIN d_function AS `function` ON employee.function_id=`function`.id
+JOIN d_postalcode AS postalcode ON customer.postalcode_id=postalcode.id
+--duur van de query: 0,328 sec
 
 --Het aantal verkochte producten per gebied:
 SELECT SUM(product.quantity) AS "totaal verkochte producten", gebied.name 
