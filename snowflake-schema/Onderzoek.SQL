@@ -22,27 +22,37 @@ GROUP BY gebied.name
 --duur van de query: 0,016 sec
 
 --De totale omzet van de functie cashier:
-SELECT SUM(product.price_total) AS "totale omzet", employee.function
+SELECT SUM(product.price_total) AS "totale omzet", `function`.`function`
 FROM f_product_sold AS product 
-JOIN d_employee AS employee ON product.Employee_id=employee.id
-WHERE employee.function = "cashier"
-GROUP BY employee.function
---duur van de query: 0,016 sec
+JOIN d_employee AS employee ON product.Employee_id= employee.id
+JOIN d_function AS `function` ON employee.function_id=`function`.id
+WHERE `function`.`function`='cashier'
+GROUP BY `function`.`function`
+--duur van de query: 0,015 sec
 
 --Het toevoegen van een nieuw verkochte product waarbij iedere attribute/dimensie nieuw is
 INSERT INTO `d_area` (`id`, `name`, `lon`, `lat`) VALUES (3, 'Amsterdam', 4.8951679, 52.3702157);
-INSERT INTO `d_customer` (`id`, `firstname`, `surname`, `IBAN`, `postalcode`) VALUES (5, 'Anja', 'van der Broek', NULL, '2675BL');
-INSERT INTO `d_employee` (`id`, `firstname`, `surname`, `function`) VALUES (5, 'Sophie', 'de Vries', 'cashier');
-INSERT INTO `d_pos` (`id`, `store`, `location`, `name`) VALUES (6, 'Appie to go', 'Amsterdam', 'Zelfscan1');
-INSERT INTO `d_sku` (`id`, `product_name`, `hasUPC`, `UPC`, `category`) VALUES (7, 'Old Amsterdam kaas', 0, NULL, 'cheese');
-INSERT INTO `f_product_sold` (`id`, `price_total`, `quantity`, `SKU_id`, `POS_id`, `Area_id`, `customer_id`, `Employee_id`) VALUES (27, 25, 10, 7, 6, 3, 5, 5);
---duur van de query: 0,702 sec 
+INSERT INTO `d_store` (`id`, `name`, `area_id`) VALUES (5, 'Appie to Go', 3);
+INSERT INTO `d_pos` (`id`, `name`, `store_id`) VALUES (8, 'zelfscan1', 5);
+
+INSERT INTO `d_catagory` (`id`, `catagory`) VALUES (5, 'cheese');
+INSERT INTO `d_sku` (`id`, `product_name`, `hasUPC`, `UPC`, `catagory_id`) VALUES (7, 'Old Amsterdam kaas', 0, NULL, 5);
+
+INSERT INTO `d_postalcode` (`id`, `postalcode`) VALUES (3, '5647HS');
+INSERT INTO `d_customer` (`id`, `firstname`, `surname`, `IBAN`, `postalcode_id`) VALUES (4, 'Anja', 'van der Broek', NULL, 3);
+
+INSERT INTO `d_function` (`id`, `function`) VALUES (4, 'department manager');
+INSERT INTO `d_employee` (`id`, `firstname`, `surname`, `function_id`) VALUES (5, 'Sophie', 'de Vries', 4);
+
+INSERT INTO `f_product_sold` (`id`, `price_total`, `quantity`, `SKU_id`, `customer_id`, `Employee_id`, `POS_id`) VALUES (8, 25, 10, 7, 4, 5, 8);
+
+--duur van de query: 1,530 sec 
 
 --Het toevoegen van een verkocht product waarbij iedere attribute/dimensie al bestaat
-INSERT INTO `f_product_sold` (`id`, `price_total`, `quantity`, `SKU_id`, `POS_id`, `Area_id`, `customer_id`, `Employee_id`) VALUES (28, 25, 10, 7, 6, 3, 5, 5);
---duur van de query: 0,062 sec
+INSERT INTO `f_product_sold` (`id`, `price_total`, `quantity`, `SKU_id`, `customer_id`, `Employee_id`, `POS_id`) VALUES (9, 10, 6, 7, 3, 2, 8);
+--duur van de query: 0,125 sec
 
 --Het verwijderen van een verkocht product
-DELETE FROM `f_product_sold` WHERE `id`=28;
---duur van de query: 0,078 sec
+DELETE FROM `f_product_sold` WHERE `id`=9
+--duur van de query: 0,359 sec
 
