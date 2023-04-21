@@ -13,9 +13,11 @@ JOIN d_postalcode AS postalcode ON customer.postalcode_id=postalcode.id
 --duur van de query: 0,328 sec
 
 --Het aantal verkochte producten per gebied:
-SELECT SUM(product.quantity) AS "totaal verkochte producten", gebied.name 
+SELECT SUM(product.quantity), gebied.name
 FROM f_product_sold AS product 
-JOIN d_area AS gebied ON product.Area_id= gebied.id
+JOIN d_pos AS pos ON product.POS_id= pos.id
+JOIN d_store AS store ON pos.store_id=store.id
+JOIN d_area AS gebied ON store.area_id=gebied.id
 GROUP BY gebied.name
 --duur van de query: 0,016 sec
 
