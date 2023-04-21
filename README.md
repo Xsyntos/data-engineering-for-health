@@ -19,11 +19,16 @@ In deze github-repostiry bewaar ik de databases die zijn gebruikt voor het field
 ## Database lokaal draaien
 Om één van de databases lokaal te kunnen draaien moet men het programma [docker installeren](https://docs.docker.com/get-docker/). Men kan maar 1 database tegelijk draaien omdat iedere database gebruikt dezelfde port. Om een database te draaien moet men binnen 1 van de folders het commando **docker-compose up** uit te voeren. Om vervolgens in te loggen op de database heeft men de volgende credentials nodig:
 
-**Hostname**: localhost
-**Port**: 23306
-**Username**: root
-**Password**: root
-**Database**: mydb
+- **Hostname**: localhost
+- **Port**: 23306
+- **Username**: root
+- **Password**: root
+- **Database**: mydb
+
+### Onderzoek test
+1. Start de database van de gekozen structuur op volgens de uitleg onder het kopje Database lokaal draaien
+2. Log vervolgens in via een database manage programma zoals PHPmyadmin of HeidiSQL met de inlog gegevens die hierboven staan.
+3. Voer de query die in het bestand **Onderzoek.SQL** uit op de database om de snelheid van de query's te meten. (Het kan zijn dat de waardes erg afwijken van de gemeten waardes, omdat de database op een andere computer draai of de database cached vorige resultaten van de query's)
 
 ## Toestemming
 De database bevat testdata en het toegestaan om deze repo/databases te gebruiken voor eigen doeleindes, echter het is wel verplicht om een referenties te geven naar deze repo mocht u het gebruiken voor onderzoek/educatie.
