@@ -48,18 +48,20 @@ function doIt(connection, connectionAdmin, i) {
         let end = Date.now();
         const duration = end - start;
         console.log(`Query executed in ${duration} ms`);
-        connection.query(`
-        DELETE FROM f_product_sold WHERE id=27;
-        DELETE FROM d_area WHERE id=3;
-        DELETE FROM d_customer WHERE id=5;
-        DELETE FROM d_pos WHERE id=6;
-        DELETE FROM d_sku WHERE id=7;
-        `, async (error, results) => {
-            if (error) throw error;
+
+        connection.query(
+            `
+                DELETE FROM \`f_product_sold\` WHERE \`id\`=28;
+                DELETE FROM \`d_customer\` WHERE \`id\`=5;
+                DELETE FROM \`d_employee\` WHERE \`id\`=5;
+                DELETE FROM \`d_pos\` WHERE \`id\`=6;
+                DELETE FROM \`d_sku\` WHERE \`id\`=7;
+                DELETE FROM \`d_area\` WHERE \`id\`=3;
+            ` , async (error, results) => {
             connectionAdmin.query(`INSERT INTO results (query_name, schema_name, duration) VALUES ('${query_name}', '${schema}', ${duration});`)
             if(i < amount_of_tests)
                 await doIt(connection, connectionAdmin, i + 1);
-          });
+        });
         
     });
 }
