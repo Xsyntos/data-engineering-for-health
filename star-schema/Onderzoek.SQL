@@ -29,14 +29,17 @@ INSERT INTO `d_customer` (`id`, `firstname`, `surname`, `IBAN`, `postalcode`) VA
 INSERT INTO `d_employee` (`id`, `firstname`, `surname`, `function`) VALUES (5, 'Sophie', 'de Vries', 'cashier');
 INSERT INTO `d_pos` (`id`, `store`, `location`, `name`) VALUES (6, 'Appie to go', 'Amsterdam', 'Zelfscan1');
 INSERT INTO `d_sku` (`id`, `product_name`, `hasUPC`, `UPC`, `category`) VALUES (7, 'Old Amsterdam kaas', 0, NULL, 'cheese');
-INSERT INTO `f_product_sold` (`id`, `price_total`, `quantity`, `SKU_id`, `POS_id`, `Area_id`, `customer_id`, `Employee_id`) VALUES (27, 25, 10, 7, 6, 3, 5, 5);
+INSERT INTO `f_product_sold` (`id`, `price_total`, `quantity`, `SKU_id`, `POS_id`, `Area_id`, `customer_id`, `Employee_id`) VALUES (27, 25, 7, 7, 6, 3, 5, 5);
 --duur van de query: 0,702 sec 
 
 --Het toevoegen van een verkocht product waarbij iedere attribute/dimensie al bestaat
-INSERT INTO `f_product_sold` (`id`, `price_total`, `quantity`, `SKU_id`, `POS_id`, `Area_id`, `customer_id`, `Employee_id`) VALUES (28, 25, 10, 7, 6, 3, 5, 5);
+INSERT INTO `f_product_sold` (`id`, `price_total`, `quantity`, `SKU_id`, `POS_id`, `Area_id`, `customer_id`, `Employee_id`) VALUES (28, 25, 6, 6, 5, 2, 4, 4);
 --duur van de query: 0,062 sec
 
 --Het verwijderen van een verkocht product
 DELETE FROM `f_product_sold` WHERE `id`=28;
 --duur van de query: 0,078 sec
+
+--Updaten van een feit
+UPDATE `f_product_sold` SET `id`=10, `price_total`=10, `quantity`=4, `SKU_id`=2, `POS_id`=1, `Area_id`=1, `customer_id`=3, `Employee_id`=2 WHERE `id`=10
 

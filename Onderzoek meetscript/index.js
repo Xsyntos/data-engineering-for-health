@@ -1,20 +1,7 @@
 const mysql = require('mysql');
-const query = `INSERT INTO \`d_area\` (\`id\`, \`name\`, \`lon\`, \`lat\`) VALUES (3, 'Amsterdam', 4.8951679, 52.3702157);
-INSERT INTO \`d_store\` (\`id\`, \`name\`, \`area_id\`) VALUES (5, 'Appie to Go', 3);
-INSERT INTO \`d_pos\` (\`id\`, \`name\`, \`store_id\`) VALUES (8, 'zelfscan1', 5);
-
-INSERT INTO \`d_catagory\` (\`id\`, \`catagory\`) VALUES (5, 'cheese');
-INSERT INTO \`d_sku\` (\`id\`, \`product_name\`, \`hasUPC\`, \`UPC\`, \`catagory_id\`) VALUES (7, 'Old Amsterdam kaas', 0, NULL, 5);
-
-INSERT INTO \`d_postalcode\` (\`id\`, \`postalcode\`) VALUES (3, '5647HS');
-INSERT INTO \`d_customer\` (\`id\`, \`firstname\`, \`surname\`, \`IBAN\`, \`postalcode_id\`) VALUES (4, 'Anja', 'van der Broek', NULL, 3);
-
-INSERT INTO \`d_function\` (\`id\`, \`function\`) VALUES (4, 'department manager');
-INSERT INTO \`d_employee\` (\`id\`, \`firstname\`, \`surname\`, \`function_id\`) VALUES (5, 'Sophie', 'de Vries', 4);
-
-INSERT INTO \`f_product_sold\` (\`id\`, \`price_total\`, \`quantity\`, \`SKU_id\`, \`customer_id\`, \`Employee_id\`, \`POS_id\`) VALUES (8, 25, 10, 7, 4, 5, 8);`
-const schema = "galaxy";
-const query_name = "add_all_new";
+const query = `UPDATE \`product_sold\` SET \`id\`=5, \`price_total\`=XXX, \`quantity\`=1, \`pos\`='service balie', \`store\`='plus', \`area\`='Groningen', \`area_lon\`=2.5235626, \`area_lat\`=5.21623, \`employee_firstname\`='Jeroen', \`employee_surname\`='de Brug', \`employee_function\`='clerk', \`customer_firstname\`='Anja', \`customer_surname\`='de Put', \`customer_iban\`=NULL, \`customer_postalcode\`='3261AB', \`product_name\`='bloemkool', \`product_has_upc\`=0, \`product_upc\`=NULL, \`product_category\`='vegables' WHERE \`id\`=5;`
+const schema = "flatfile";
+const query_name = "update";
 const amount_of_tests = 100;
 
 run();
@@ -68,15 +55,5 @@ function doIt(connection, connectionAdmin, i) {
 async function unDoIt(connection){
     //await connection.query(`INSERT INTO \`f_product_sold\` (\`id\`, \`price_total\`, \`quantity\`, \`SKU_id\`, \`POS_id\`, \`Area_id\`, \`customer_id\`, \`Employee_id\`) VALUES (28, 25, 6, 6, 5, 2, 4, 4);`)
     //await connection.query(`DELETE FROM \`f_product_sold\` WHERE \`id\`=28;`)
-    await connection.query(`DELETE FROM \`f_product_sold\` WHERE \`id\`=8;
-    DELETE FROM \`d_employee\` WHERE \`id\`=5;
-    DELETE FROM \`d_function\` WHERE \`id\`=4;
-    DELETE FROM \`d_customer\` WHERE \`id\`=4;
-    DELETE FROM \`d_postalcode\` WHERE \`id\`=3;
-    DELETE FROM \`d_sku\` WHERE \`id\`=7;
-    DELETE FROM \`d_catagory\` WHERE \`id\`=5;
-    DELETE FROM \`d_pos\` WHERE \`id\`=8;
-    DELETE FROM \`d_store\` WHERE \`id\`=5;
-    DELETE FROM \`d_area\` WHERE \`id\`=3;
-    `)
+   //await connection.query(`INSERT INTO \`f_product_sold\` (\`id\`, \`price_total\`, \`quantity\`, \`d_SKU_id\`, \`d_customer_id\`, \`d_employee_id\`, \`d_pos_id\`) VALUES (10, 25, 10, 1, 3, 3, 4);`)
 }
