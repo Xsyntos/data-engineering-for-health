@@ -1,6 +1,6 @@
 const mysql = require('mysql');
-const query = `UPDATE \`product_sold\` SET \`id\`=5, \`price_total\`=XXX, \`quantity\`=1, \`pos\`='service balie', \`store\`='plus', \`area\`='Groningen', \`area_lon\`=2.5235626, \`area_lat\`=5.21623, \`employee_firstname\`='Jeroen', \`employee_surname\`='de Brug', \`employee_function\`='clerk', \`customer_firstname\`='Anja', \`customer_surname\`='de Put', \`customer_iban\`=NULL, \`customer_postalcode\`='3261AB', \`product_name\`='bloemkool', \`product_has_upc\`=0, \`product_upc\`=NULL, \`product_category\`='vegables' WHERE \`id\`=5;`
-const schema = "flatfile";
+const query = `UPDATE \`S_receipt\` SET \`quantity\`=XXX, \`total_price\`=5 WHERE \`id\`=6;`
+const schema = "datavault";
 const query_name = "update";
 const amount_of_tests = 100;
 
@@ -53,7 +53,7 @@ function doIt(connection, connectionAdmin, i) {
 }
 
 async function unDoIt(connection){
-    //await connection.query(`INSERT INTO \`f_product_sold\` (\`id\`, \`price_total\`, \`quantity\`, \`SKU_id\`, \`POS_id\`, \`Area_id\`, \`customer_id\`, \`Employee_id\`) VALUES (28, 25, 6, 6, 5, 2, 4, 4);`)
-    //await connection.query(`DELETE FROM \`f_product_sold\` WHERE \`id\`=28;`)
-   //await connection.query(`INSERT INTO \`f_product_sold\` (\`id\`, \`price_total\`, \`quantity\`, \`d_SKU_id\`, \`d_customer_id\`, \`d_employee_id\`, \`d_pos_id\`) VALUES (10, 25, 10, 1, 3, 3, 4);`)
+//    await connection.query(`
+//    INSERT INTO \`L_product_sold\` (\`H_employee_id\`, \`id\`, \`H_customer_id\`, \`H_product_id\`, \`H_pos_id\`, \`H_order_details_id\`) VALUES (3, 7, 3, 3, 6, 6);
+//    `)
 }
